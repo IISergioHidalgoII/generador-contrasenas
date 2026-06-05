@@ -10,21 +10,21 @@ python generador.py
 
 ## Funciones
 
-| Funcion | Que hace |
-|---|---|
+| Funcion                                                       | Que hace                                                                                |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `generar_contrasena(longitud, mayusculas, numeros, simbolos)` | Genera una contrasena aleatoria garantizando al menos un caracter de cada tipo activado |
-| `pedir_si_no(mensaje, default)` | Solicita una respuesta S/N con valor por defecto |
-| `mostrar_menu()` | Imprime el menu principal |
-| `main()` | Controla el flujo en un bucle |
+| `pedir_si_no(mensaje, default)`                               | Solicita una respuesta S/N con valor por defecto                                        |
+| `mostrar_menu()`                                              | Imprime el menu principal                                                               |
+| `main()`                                                      | Controla el flujo en un bucle                                                           |
 
 ## Criterios configurables
 
-| Criterio | Default | Descripcion |
-|---|---|---|
-| Longitud | 12 | Minimo 4 caracteres |
-| Mayusculas | Si | Incluye A-Z |
-| Numeros | Si | Incluye 0-9 |
-| Simbolos | No | Incluye `!@#$%&*?` |
+| Criterio   | Default | Descripcion         |
+| ---------- | ------- | ------------------- |
+| Longitud   | 12      | Minimo 4 caracteres |
+| Mayusculas | Si      | Incluye A-Z         |
+| Numeros    | Si      | Incluye 0-9         |
+| Simbolos   | No      | Incluye `!@#$%&*?`  |
 
 ## Diagrama de flujo
 
