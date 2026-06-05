@@ -1,11 +1,33 @@
 import random
 import string
 
-# ==================== Generacion basica ====================
+# ==================== Generacion con criterios ====================
 
-def generar_contrasena(longitud=12):
-    caracteres = string.ascii_letters + string.digits
-    return "".join(random.choices(caracteres, k=longitud))
+def generar_contrasena(longitud=12, mayusculas=True, numeros=True, simbolos=False):
+    caracteres = string.ascii_lowercase
+    obligatorios = []
+
+    if mayusculas:
+        caracteres += string.ascii_uppercase
+        obligatorios.append(random.choice(string.ascii_uppercase))
+    if numeros:
+        caracteres += string.digits
+        obligatorios.append(random.choice(string.digits))
+    if simbolos:
+        especiales = "!@#$%&*?"
+        caracteres += especiales
+        obligatorios.append(random.choice(especiales))
+
+    relleno = random.choices(caracteres, k=longitud - len(obligatorios))
+    resultado = obligatorios + relleno
+    random.shuffle(resultado)
+    return "".join(resultado)
+
+def pedir_si_no(mensaje, default=True):
+    valor = input(f"{mensaje} ({'S/n' if default else 's/N'}): ").strip().lower()
+    if valor == "":
+        return default
+    return valor in ("s", "si", "y", "yes")
 
 def mostrar_menu():
     print("\n===== Generador de Contrasenas =====")
@@ -23,7 +45,10 @@ def main():
                 if longitud < 4:
                     print("La longitud minima es 4.")
                 else:
-                    print(f"Contrasena: {generar_contrasena(longitud)}")
+                    mayusculas = pedir_si_no("Incluir mayusculas?", default=True)
+                    numeros    = pedir_si_no("Incluir numeros?",    default=True)
+                    simbolos   = pedir_si_no("Incluir simbolos (!@#$%&*?)?", default=False)
+                    print(f"Contrasena: {generar_contrasena(longitud, mayusculas, numeros, simbolos)}")
             except ValueError:
                 print("Valor invalido.")
         elif opcion == "2":
